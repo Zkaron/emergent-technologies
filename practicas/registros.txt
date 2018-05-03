@@ -1,0 +1,3 @@
+Wendy Marleth,Azamar,Ortega,CEO,Jardines de Manos SA de CV,San Adrian,65,127,Horizontal San Francisco,Zapopan,Jalisco,45130,3311825739,vocaloid@gmail.com,9/1/1996
+Paulina,Prado,Valdes,Monjita,Capilla San Pablito,Av Desconocida pero que casi conozco,23,1273,Mexicalzingo,Guadalajara,Jalisco,45145,3326222892,prado@valdes.god,24/1/1996
+Erik,Gutierrez,Ismerio,CISO,Seguridad,Av Desconocida,666,222,Desconocido,Desconocido,Desconocido,44444,3333333333,annonimo@anon.nimo,24/1/1986

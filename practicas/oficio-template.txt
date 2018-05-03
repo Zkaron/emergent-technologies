@@ -1,0 +1,13 @@
+Asunto: Eres Genial.
+
+Para: [correoElectronico]
+Al ingeniero [nombre] [apellido1] [apellido2]
+
+Por medio del presente le agradecemos su servicio y devocion
+ejerciendo como [cargo] en [empresa] y nos alegra que
+a la edad de [edadCalculada] años haya alcanzado tantas metas.
+
+
+          Calle [calle] [numeroExt] [numeroInt],
+          [colonia], CP [codigoPostal], [estado]
+                Telefono: [telefono]
