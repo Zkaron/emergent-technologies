@@ -1,90 +1,100 @@
 #! /usr/bin/env python
 # Proyecto.
 
-from Tkinter import *
+from tkinter import *
+from tkinter import ttk
 
-def Aceptar():
-    f=open('./registro2.txt','r+')
-    f.write(varN.get())
-    f.write(varAM.get())
-    f.write(varAP.get())
-    f.write(varCr.get())
-    f.write(varE.get())
-    f.write(varCalle.get())
-    f.write(varNE.get())
-    f.write(varNI.get())
-    f.write(varCol.get())
-    f.write(varM.get())
-    f.write(varEst.get())
-    f.write(varCP.get())
-    f.write(varT.get())
-    f.write(varEmail.get())
-    f.write(varFN.get())
+def Register():
+    f=open('./registro2.txt','a')
+    registroNuevo = ""
+    for key, value in registro.items():
+        registroNuevo += value.get() + ", "
+    f.write(registroNuevo + '\n')
+    f.close()
 
-ventana = Frame(height=500,width=510)
-ventana.pack(padx=(50,50),pady=(10,10))
+def afunc():
+    Label(registerFrame, text="Nombre").place(x=10, y=10)
+    registro['nombre'] = StringVar()
+    Entry(registerFrame, textvariable=registro['nombre']).place(x=10,y=30)
 
-lbTitulo = Label(text="CONTESTA EL FORMULARIO").place(x= 250,y=50)
+    Label(registerFrame, text="Apellido Paterno").place(x=160, y=10)
+    registro['apellido1'] = StringVar()
+    Entry(registerFrame, textvariable=registro['apellido1']).place(x=160,y=30)
 
-lbNom = Label(text="Nombre").place(x= 100,y=150)
-varN = StringVar()
-camNom = Entry(ventana,textvariable=varN).place(x=50,y=115)
+    Label(registerFrame, text="Apellido Paterno").place(x=310, y=10)
+    registro['apellido2'] = StringVar()
+    Entry(registerFrame, textvariable=registro['apellido2']).place(x=310,y=30)
 
-lbNom = Label(text="Apellido Matreno").place(x=250,y=150)
-varAM = StringVar()
-camAM = Entry(ventana,textvariable=varAM).place(x=200,y=115)
+    Label(registerFrame, text="Cargo").place(x=460, y=10)
+    registro['cargo'] = StringVar()
+    Entry(registerFrame, textvariable=registro['cargo']).place(x=460,y=30)
 
-lbNom = Label(text="Apellido Paterno").place(x=400,y=150)
-varAP = StringVar()
-camAP = Entry(ventana,textvariable=varAP).place(x=350,y=115)
+    Label(registerFrame, text="Empresa").place(x=610, y=10)
+    registro['empresa'] = StringVar()
+    Entry(registerFrame, textvariable=registro['empresa']).place(x=610,y=30)
 
-lbNom = Label(text="Cargo").place(x= 100,y=200)
-varCr = StringVar()
-camCr = Entry(ventana,textvariable=varCr).place(x=50,y=165)
+    Label(registerFrame, text="Calle").place(x=10, y=80)
+    registro['calle'] = StringVar()
+    Entry(registerFrame, textvariable=registro['calle']).place(x=10,y=100)
 
-lbNom = Label(text="Empresa").place(x=250,y=200)
-varE = StringVar()
-camE = Entry(ventana,textvariable=varE).place(x=200,y=165)
+    Label(registerFrame, text="Numero Exterior").place(x=160, y=80)
+    registro['numeroExt'] = StringVar()
+    Entry(registerFrame, textvariable=registro['numeroExt']).place(x=160,y=100)
 
-lbNom = Label(text="Calle").place(x= 100,y=250)
-varCalle = StringVar()
-camCalle = Entry(ventana,textvariable=varCalle).place(x=50,y=215)
+    Label(registerFrame, text="Numero Interior").place(x=310, y=80)
+    registro['numeroInt'] = StringVar()
+    Entry(registerFrame, textvariable=registro['numeroInt']).place(x=310,y=100)
 
-lbNom = Label(text="NumeroExt").place(x=250,y=250)
-varNE = StringVar()
-camNE = Entry(ventana,textvariable=varNE).place(x=200,y=215)
+    Label(registerFrame, text="Colonia").place(x=460, y=80)
+    registro['colonia'] = StringVar()
+    Entry(registerFrame, textvariable=registro['colonia']).place(x=460,y=100)
 
-lbNom = Label(text="NumeroInt").place(x=400,y=250)
-varNI = StringVar()
-camNI = Entry(ventana,textvariable=varNI).place(x=350,y=215)
+    Label(registerFrame, text="Municipio").place(x=610, y=80)
+    registro['municipio'] = StringVar()
+    Entry(registerFrame, textvariable=registro['municipio']).place(x=610,y=100)
 
-lbNom = Label(text="Colonia").place(x= 100,y=300)
-varCol = StringVar()
-camCol = Entry(ventana,textvariable=varCol).place(x=50,y=265)
+    Label(registerFrame, text="Estado").place(x=10, y=130)
+    registro['estado'] = StringVar()
+    Entry(registerFrame, textvariable=registro['estado']).place(x=10,y=150 )
 
-lbNom = Label(text="Municipio").place(x=250,y=300)
-varM = StringVar()
-camM = Entry(ventana,textvariable=varM).place(x=200,y=265)
+    Label(registerFrame, text="Codigo Postal").place(x=160, y=130)
+    registro['codigoPostal'] = StringVar()
+    Entry(registerFrame, textvariable=registro['codigoPostal']).place(x=160,y=150)
 
-lbNom = Label(text="Estado").place(x=400,y=300)
-varEst = StringVar()
-camEst = Entry(ventana,textvariable=varEst).place(x=350,y=265)
+    Label(registerFrame, text="Telefono").place(x=310, y=130)
+    registro['telefono'] = StringVar()
+    Entry(registerFrame, textvariable=registro['telefono']).place(x=310,y=150)
 
-lbNom = Label(text="CodigoPostal").place(x= 100,y=350)
-varCP = StringVar()
-camCP = Entry(ventana,textvariable=varCP).place(x=50,y=315)
+    Label(registerFrame, text="Correo Electronico").place(x=460, y=130)
+    registro['correoElectronico'] = StringVar()
+    Entry(registerFrame, textvariable=registro['correoElectronico']).place(x=460,y=150)
 
-lbNom = Label(text="Telefono").place(x=250,y=350)
-varT = StringVar()
-camT = Entry(ventana,textvariable=varT).place(x=200,y=315)
+    Label(registerFrame, text="Fecha de Nacimieto").place(x=610, y=130)
+    registro['fechaNacimiento'] = StringVar()
+    Entry(registerFrame, textvariable=registro['fechaNacimiento']).place(x=610,y=150)
 
-lbNom = Label(text="CorreoElectronico").place(x=400,y=350)
-varEmail = StringVar()
-camEmail = Entry(ventana,textvariable=varEmail).place(x=350,y=315)
+    Button(registerFrame, command=Register, text="Agregar").place(x=350,y=180)
 
-lbNom = Label(text="FechaNacimiento").place(x= 250,y=400)
-varFN = StringVar()
-camFN = Entry(ventana,textvariable=varFN).place(x=200,y=365)
+registro = dict.fromkeys(['nombre', 'apellido1', 'apellido2', 'cargo', 'empresa', 'calle',
+ 'numeroExt', 'numeroInt', 'colonia','municipio', 'estado', 'codigoPostal',
+ 'telefono', 'correoElectronico', 'fechaNacimiento'])
 
-boton = Button(ventana,command=Aceptar, text="Aceptar").place(x=200,y=450)
-ventana.mainloop()
+root = Tk()
+notebook = ttk.Notebook(root)
+notebook.pack(fill="both", expand="yes")
+
+registerFrame = ttk.Frame()
+listRegistersFrame = ttk.Frame()
+
+notebook.add(registerFrame, text="Registrar")
+notebook.add(listRegistersFrame, text="Listado de Registros")
+
+afunc()
+
+# createRegisterWindow()
+
+
+root.geometry("800x800")
+root.mainloop()
+
+# createMainFrame()
