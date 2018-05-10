@@ -27,32 +27,56 @@ def Register():
     registers.set(listboxRegister)
 
 def Edit():
+
+    edicionStr = ""
+    for key,value in registroEdicion.items():
+        if key != 'uuid':
+            registros[itemSelected][key] = value.get()
+        edicionStr += registros[itemSelected][key] + ", "
+
+    print(edicionStr)
+    uuid = registroEdicion['uuid']
+    print(uuid)
+    f = open('./registros.data', 'r+')
+    db = f.readlines()
+    f.seek(0)
+    for line in db:
+        if line.startswith(uuid) == False:
+            print('no edita linea:' + line)
+            f.write(line)
+        else:
+            print('edita: ' + line)
+            f.write(edicionStr)
+    f.truncate()
+    f.close()
+
+    registros[itemSelected]['edadCalculada'] = str(int(abs(today - datetime.strptime(registros[itemSelected]['fechaNacimiento'], '%d/%m/%Y').date()).days / 365.25))
+    listboxRegister[itemSelected] = (registros[itemSelected]['nombre'] + " " + registros[itemSelected]['apellido1'] + " " + registros[itemSelected]['apellido2'])
+    registers.set(listboxRegister)
     deactivateEdition()
 
 def Delete():
-    index = listbox.curselection()
-    if(len(index) == 1):
-        idx = int(index[0])
-        uuid = registros[idx]['uuid']
+    uuid = registros[itemSelected]['uuid']
 
-        f = open('./registros.data', 'r+')
-        db = f.readlines()
-        f.seek(0)
-        for line in db:
-            if line.find(uuid) == -1:
-                f.write(line)
-        f.truncate()
-        f.close()
+    f = open('./registros.data', 'r+')
+    db = f.readlines()
+    f.seek(0)
+    for line in db:
+        if line.find(uuid) == -1:
+            f.write(line)
+    f.truncate()
+    f.close()
 
-        registros.pop(idx)
-        listboxRegister.pop(idx)
-        registers.set(listboxRegister)
+    registros.pop(itemSelected)
+    listboxRegister.pop(itemSelected)
+    registers.set(listboxRegister)
 
 def showCurrentSelected(*args):
+    global itemSelected
     index = listbox.curselection()
     if len(index) == 1:
-        idx = int(index[0])
-        for key,value in registros[idx].items():
+        itemSelected = int(index[0])
+        for key,value in registros[itemSelected].items():
             if key == 'uuid':
                 registroEdicion[key] = value
             else:
@@ -220,8 +244,6 @@ def createListRegistersWindow():
         entry.place(x=xPos, y=yPos)
         xPos += incrementX
 
-
-
 def getRegisters():
     # global currentId
     # currentId = 0
@@ -270,6 +292,8 @@ today = date.today()
 
 registerEntries = []
 editEntries = []
+
+itemSelected = -1
 
 # Se crea ventana principal
 root = Tk()
