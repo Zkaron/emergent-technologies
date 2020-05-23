@@ -9,7 +9,7 @@ import uuid
 
 # Añade un nuevo registro a la Base de Datos (Final del Archivo)
 def Register():
-    registroNuevo['uuid'] = str(uuid.uuid4())
+    registroNuevo['uuid'] = StringVar(uuid.uuid4())
     registroStr = ""
     for key, value in registroNuevo.items():
         if key != 'uuid':
